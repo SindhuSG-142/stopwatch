@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="hours">00</span>
+    <span id="minutes">00</span>
+
+    <span id="seconds">00</span>
+    <span id="count">00</span>
+    <button id="start">start</button>
+    <button id="pause">pause</button>
+    <button id="reset">reset</button>
+</body>
+</html>
+<script>
+    let start=document.getElementById('start');
+    let pause=document.getElementById('pause');
+
+    let reset=document.getElementById('reset');
+
+    let hours= 0;
+    let minutes= 0;
+    let seconds=0;
+     let count=0;
+
+     start.addEventListener('click', function(){
+        timer=true;
+        stopwatch();
+     });
+     pause.addEventListener('click', function(){
+        timer=false;
+     });
+     reset.addEventListener('click', function(){
+        timer=false;
+        hours=0;
+     minutes=0;
+     seconds=0;
+     count=0;
+     document.getElementById('hours').innerHTML="00";
+     document.getElementById('minutes').innerHTML="00";
+
+     document.getElementById('seconds').innerHTML="00";
+
+     document.getElementById('count').innerHTML="00";
+     });
+
+     
+    function stopwatch(){
+        if(timer){
+     count++;
+     if(count==100)
+     {
+        seconds++;
+        count=0;
+     }
+     if(seconds==60){
+        minutes++;
+        seconds=0;
+     }
+     if(minutes==60){
+        hours++;
+        minutes=0;
+        seconds=0;
+     }
+     let hrstring=hours;
+     let minstring=minutes;
+     let secstring=seconds;
+     let countstring=count;
+     if(hours<10){
+        hrstring="0"+hrstring;
+     }
+     if(minutes<10){
+        minstring="0"+minstring;
+     }
+     if(seconds<10){
+        secstring="0"+secstring;
+     }
+     if(count<10){
+        countstring="0"+countstring;
+     }
+     document.getElementById('hours').innerHTML=hrstring;
+     document.getElementById('minutes').innerHTML=minstring;
+
+     document.getElementById('seconds').innerHTML=secstring;
+
+     document.getElementById('count').innerHTML=countstring;
+     setTimeout(stopwatch,10);
+    }
+
+}
+        
+</script>
